@@ -1,0 +1,10 @@
+{
+  "name": "cheongna-steam-daily-note",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node preview.cjs",
+    "build": "node build.cjs",
+    "test": "node verify.cjs && node verify-feedback.cjs"
+  }
+}

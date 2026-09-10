@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>과학 탐구·발명 아이디어 작성 템플릿</title>
+    <meta name="description" content="레고에듀케이션 청라스마트러닝센터 학생들이 연구 동기, 연구 목적, 활용 방법, 기대 효과를 정리하는 과학 탐구·발명 아이디어 작성 앱">
+    <link rel="icon" href="./assets/steamedu-logo.png">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <img class="brand-logo" src="./assets/steamedu-logo.png" alt="STEAMedu 로고">
+          <div>
+            <p class="eyebrow">레고에듀케이션 청라스마트러닝센터</p>
+            <h1>과학 탐구·발명 아이디어 작성 템플릿</h1>
+          </div>
+        </div>
+        <div class="progress-wrap" aria-label="작성 진행률">
+          <div class="progress-copy">
+            <span id="progressLabel">0% 작성</span>
+            <span id="saveState">자동 저장</span>
+          </div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+        </div>
+        <div class="actions" aria-label="앱 작업">
+          <a class="tool-button idea-generator" href="https://ai.studio/apps/3e23a27a-4cea-4b34-a20b-a5758bb28c6a?fullscreenApplet=true" target="_blank" rel="noopener" aria-label="아이디어 생성기 열기">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.7 4.7L18 9.5l-4.3 1.8L12 16l-1.7-4.7L6 9.5l4.3-1.8z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/><path d="m5 4 .7 1.8L8 6.5l-2.3.7L5 9l-.7-1.8L2 6.5l2.3-.7z"/></svg>
+            <span>아이디어 생성기</span>
+          </a>
+          <button class="tool-button" type="button" id="printApp" aria-label="전체 인쇄">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V4h10v4"/><path d="M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><path d="M7 14h10v6H7z"/></svg>
+            <span>전체 인쇄</span>
+          </button>
+          <button class="tool-button" type="button" id="exportData" aria-label="내보내기">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 19h14"/></svg>
+            <span>내보내기</span>
+          </button>
+          <label class="tool-button import-button" aria-label="가져오기">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V9"/><path d="m7 14 5-5 5 5"/><path d="M5 5h14"/></svg>
+            <span>가져오기</span>
+            <input type="file" id="importData" accept="application/json">
+          </label>
+          <button class="tool-button subtle" type="button" id="resetData" aria-label="초기화">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/></svg>
+            <span>초기화</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <nav class="step-nav" aria-label="작성 단계">
+          <button class="step-pill active" type="button" data-target="cover"><span>0</span>기본 정보</button>
+          <button class="step-pill" type="button" data-target="problem"><span>1</span>문제 발견</button>
+          <button class="step-pill" type="button" data-target="scamper"><span>2</span>SCAMPER</button>
+          <button class="step-pill" type="button" data-target="science"><span>3</span>과학 원리</button>
+          <button class="step-pill" type="button" data-target="making"><span>4</span>제작 계획</button>
+          <button class="step-pill" type="button" data-target="submission"><span>5</span>제출 정리</button>
+          <button class="step-pill" type="button" data-target="presentation"><span>6</span>발표 점검</button>
+        </nav>
+
+        <section class="sheet" aria-live="polite">
+          <article class="page active" id="cover" data-step-title="기본 정보">
+            <div class="page-intro">
+              <div class="cover-copy">
+                <img class="cover-logo" src="./assets/steamedu-logo.png" alt="STEAMedu 로고">
+                <p class="center-name">레고에듀케이션 청라스마트러닝센터</p>
+                <p class="section-kicker">STEAMedu invention note</p>
+                <h2>과학 탐구·발명 아이디어 작성 템플릿</h2>
+                <p>연구 동기 - 연구 목적 - 활용 방법(과학적 원리) - 기대 효과</p>
+              </div>
+              <img class="flow-image" src="./assets/process-map.svg" alt="발명 아이디어 작성 흐름">
+            </div>
+
+            <div class="form-grid two">
+              <label>이름<input data-key="name" data-track="true" type="text" placeholder="이름을 입력하세요"></label>
+              <label>학년
+                <select data-key="className" data-track="true">
+                  <option value="">학년 선택</option>
+                  <option value="1학년">1학년</option>
+                  <option value="2학년">2학년</option>
+                  <option value="3학년">3학년</option>
+                  <option value="4학년">4학년</option>
+                  <option value="5학년">5학년</option>
+                  <option value="6학년">6학년</option>
+                  <option value="중1">중1</option>
+                  <option value="중2">중2</option>
+                  <option value="중3">중3</option>
+                </select>
+              </label>
+              <label>팀명<input data-key="team" type="text" placeholder="개인 제출이면 비워 두어도 됩니다"></label>
+              <label>작성일<input data-key="date" type="date"></label>
+              <label class="wide">아이디어 제목<input data-key="ideaTitle" data-track="true" type="text" placeholder="문제를 보고 떠오른 임시 제목"></label>
+            </div>
+
+            <div class="flow-table">
+              <div class="flow-row header"><span>단계</span><span>활동</span><span>무엇을 작성하나요?</span></div>
+              <div class="flow-row"><strong>1</strong><b>연구 동기</b><p>생활 속 불편함이나 궁금한 점을 관찰하고 왜 탐구하려는지 정리합니다.</p></div>
+              <div class="flow-row"><strong>2</strong><b>연구 목적</b><p>무엇을 해결하거나 확인하고 싶은지 한 문장으로 분명하게 세웁니다.</p></div>
+              <div class="flow-row"><strong>3</strong><b>활용 방법(과학적 원리)</b><p>아이디어가 어떻게 쓰이고 어떤 과학 원리로 작동하는지 연결합니다.</p></div>
+              <div class="flow-row"><strong>4</strong><b>기대 효과</b><p>누구에게 어떤 도움이 되고 앞으로 어떻게 발전할 수 있는지 정리합니다.</p></div>
+            </div>
+
+            <fieldset class="check-panel">
+              <legend>시작 전 생각 체크</legend>
+              <label><input data-key="checkReal" type="checkbox"> 실제로 겪었거나 본 문제인가요?</label>
+              <label><input data-key="checkUser" type="checkbox"> 누가 불편한지 설명할 수 있나요?</label>
+              <label><input data-key="checkLimit" type="checkbox"> 지금 방법의 아쉬운 점을 찾았나요?</label>
+              <label><input data-key="checkScience" type="checkbox"> 과학 원리와 연결할 수 있나요?</label>
+              <label><input data-key="checkMake" type="checkbox"> 직접 만들거나 모형으로 보여줄 수 있나요?</label>
+              <label><input data-key="checkDifferent" type="checkbox"> 비슷한 제품과 다른 점을 말할 수 있나요?</label>
+            </fieldset>
+          </article>
+
+          <article class="page" id="problem" data-step-title="문제 발견하기">
+            <header class="page-title"><span>1</span><div><h2>문제 발견하기</h2><p>생활 속 불편함을 관찰하고 문제로 정리하기</p></div></header>
+            <div class="form-grid">
+              <label>아이디어 제목<input data-key="problemTitle" data-track="true" type="text" placeholder="처음에는 임시 제목이어도 괜찮습니다"></label>
+              <label>관찰한 장소/상황<textarea data-key="place" data-track="true" placeholder="언제, 어디서, 어떤 상황에서 문제를 보았나요?"></textarea></label>
+              <label>불편을 겪는 사람<textarea data-key="user" data-track="true" placeholder="나, 가족, 친구, 선생님, 노약자 등 누구에게 필요한가요?"></textarea></label>
+              <label>불편한 점<textarea data-key="problem" data-track="true" placeholder="무엇이 번거롭고 위험하거나 시간이 오래 걸리나요?"></textarea></label>
+              <label>현재 해결 방법<textarea data-key="currentSolution" data-track="true" placeholder="지금은 어떻게 해결하고 있으며, 그 방법의 한계는 무엇인가요?"></textarea></label>
+            </div>
+            <div class="sketch-card" data-sketch="problemSketch">
+              <div class="sketch-head">
+                <h3>간단한 그림</h3>
+                <div class="brushes" aria-label="그림 도구">
+                  <button type="button" data-color="#111827" aria-label="검정 펜" class="swatch black active"></button>
+                  <button type="button" data-color="#0b6fb3" aria-label="파란 펜" class="swatch blue"></button>
+                  <button type="button" data-color="#ef6548" aria-label="주황 펜" class="swatch coral"></button>
+                  <label class="upload-button" aria-label="그림 첨부">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>
+                    <span>그림 첨부</span>
+                    <input type="file" data-image-upload accept="image/*">
+                  </label>
+                  <button type="button" data-eraser aria-label="지우개" class="icon-only" title="지우개">E</button>
+                  <button type="button" data-clear aria-label="그림 지우기" class="icon-only" title="그림 지우기">C</button>
+                </div>
+              </div>
+              <canvas width="1200" height="520" aria-label="문제 상황 그림판"></canvas>
+            </div>
+            <label class="sentence-box">문제 한 문장
+              <textarea data-key="problemSentence" data-track="true" placeholder="나는 ______ 때문에 ______ 을/를 해결하고 싶다."></textarea>
+            </label>
+          </article>
+
+          <article class="page" id="scamper" data-step-title="문제 해결하기">
+            <header class="page-title"><span>2</span><div><h2>문제 해결하기 (SCAMPER)</h2><p>질문을 바꿔 가며 해결 아이디어 넓히기</p></div></header>
+            <label class="single-line">아이디어 제목<input data-key="scamperTitle" type="text" placeholder="SCAMPER 적용 뒤 제목을 다듬어 보세요"></label>
+            <div class="scamper-grid">
+              <label style="--tone:#ffe3dc"><strong>S 바꾸어 보기</strong><small>재료, 모양, 위치, 사용자를 바꾸면?</small><textarea data-key="scamperS" data-track="true" placeholder="무엇을 무엇으로 바꿀까요?"></textarea></label>
+              <label style="--tone:#fff2bd"><strong>C 더해 보기</strong><small>다른 기능이나 물건과 합치면?</small><textarea data-key="scamperC" data-track="true" placeholder="무엇을 함께 붙이거나 연결할까요?"></textarea></label>
+              <label style="--tone:#dceff8"><strong>A 적용하기</strong><small>다른 물건의 원리를 빌리면?</small><textarea data-key="scamperA" data-track="true" placeholder="어떤 사례를 응용할까요?"></textarea></label>
+              <label style="--tone:#e2f1d9"><strong>M 확대 또는 축소하기</strong><small>크기, 속도, 수량을 조절하면?</small><textarea data-key="scamperM" data-track="true" placeholder="더 크게, 작게, 빠르게, 천천히 해 볼 것은?"></textarea></label>
+              <label style="--tone:#eadff2"><strong>P 다른 용도로 사용하기</strong><small>다른 장소나 대상에게 쓰면?</small><textarea data-key="scamperP" data-track="true" placeholder="누가 또 사용할 수 있을까요?"></textarea></label>
+              <label style="--tone:#eef0f2"><strong>E 빼기</strong><small>불필요한 부분을 줄이면?</small><textarea data-key="scamperE" data-track="true" placeholder="무엇을 없애거나 단순하게 만들까요?"></textarea></label>
+              <label style="--tone:#e5e8f7"><strong>R 거꾸로 또는 반대로 하기</strong><small>순서, 방향, 관점을 반대로 하면?</small><textarea data-key="scamperR" data-track="true" placeholder="뒤집거나 순서를 바꾸면 어떤가요?"></textarea></label>
+            </div>
+            <label class="sentence-box">가장 발전시키고 싶은 아이디어
+              <textarea data-key="selectedIdea" data-track="true" placeholder="선택한 SCAMPER 방법, 선택한 이유, 예상 장점을 적어 보세요."></textarea>
+            </label>
+          </article>
+
+          <article class="page" id="science" data-step-title="과학적 원리 작성하기">
+            <header class="page-title blue"><span>3</span><div><h2>과학적 원리 작성하기</h2><p>아이디어가 작동하는 이유를 과학으로 설명하기</p></div></header>
+            <div class="form-grid">
+              <label>핵심 과학 원리<input data-key="sciencePrinciple" data-track="true" type="text" placeholder="예: 힘과 운동, 마찰, 전기 회로, 빛, 소리, 열, 자석, 압력, 센서 등"></label>
+              <label>원리 설명<textarea data-key="scienceExplain" data-track="true" placeholder="그 원리가 내 발명품 안에서 어떻게 작동하나요?"></textarea></label>
+            </div>
+            <div class="matrix">
+              <div class="matrix-head"><span>순서</span><span>과학 개념</span><span>내 발명품에서 일어나는 일</span></div>
+              <label><b>1</b><input data-key="concept1" type="text" placeholder="관련 개념"><textarea data-key="conceptUse1" placeholder="무엇이 움직이고, 변하고, 측정되거나 전달되는지 적어 보세요."></textarea></label>
+              <label><b>2</b><input data-key="concept2" type="text" placeholder="관련 개념"><textarea data-key="conceptUse2" placeholder="무엇이 움직이고, 변하고, 측정되거나 전달되는지 적어 보세요."></textarea></label>
+              <label><b>3</b><input data-key="concept3" type="text" placeholder="관련 개념"><textarea data-key="conceptUse3" placeholder="무엇이 움직이고, 변하고, 측정되거나 전달되는지 적어 보세요."></textarea></label>
+              <label><b>4</b><input data-key="concept4" type="text" placeholder="관련 개념"><textarea data-key="conceptUse4" placeholder="무엇이 움직이고, 변하고, 측정되거나 전달되는지 적어 보세요."></textarea></label>
+            </div>
+            <div class="form-grid">
+              <label>확인 실험<textarea data-key="experiment" data-track="true" placeholder="발명품이 잘 작동하는지 어떤 방법으로 비교하거나 측정할까요?"></textarea></label>
+              <label>성공 기준<textarea data-key="successCriteria" data-track="true" placeholder="몇 초 줄어들기, 떨어지지 않기, 더 안전하기처럼 확인 가능한 기준"></textarea></label>
+              <label>안전/환경<textarea data-key="safety" placeholder="날카로운 부분, 전기, 뜨거운 것, 재활용 가능성 등 주의할 점"></textarea></label>
+            </div>
+          </article>
+
+          <article class="page" id="making" data-step-title="제작 계획 세우기">
+            <header class="page-title green"><span>4</span><div><h2>제작 계획 세우기</h2><p>모형이나 시제품을 만들고 개선하기</p></div></header>
+            <div class="repeat-table materials" aria-label="재료와 도구">
+              <div class="repeat-head"><span>재료/부품</span><span>수량</span><span>도구</span><span>준비/주의사항</span></div>
+              <template id="materialRow">
+                <label><input data-field="part" placeholder="재료/부품"></label>
+                <label><input data-field="count" placeholder="수량"></label>
+                <label><input data-field="tool" placeholder="도구"></label>
+                <label><input data-field="note" placeholder="준비/주의사항"></label>
+              </template>
+              <div id="materialsRows"></div>
+            </div>
+            <button class="add-row" type="button" data-add-row="materials">재료 줄 추가</button>
+
+            <div class="repeat-table build-steps" aria-label="제작 과정">
+              <div class="repeat-head"><span>순서</span><span>제작 과정</span><span>확인할 점</span></div>
+              <template id="buildRow">
+                <b data-number></b>
+                <label><textarea data-field="step" placeholder="무엇을 어떤 순서로 만들까요?"></textarea></label>
+                <label><input data-field="check" placeholder="안전 / 크기 / 작동"></label>
+              </template>
+              <div id="buildRows"></div>
+            </div>
+            <button class="add-row" type="button" data-add-row="build">과정 줄 추가</button>
+
+            <div class="form-grid">
+              <label>테스트 결과<textarea data-key="testResult" data-track="true" placeholder="잘 된 점과 잘 안 된 점을 실제로 해 본 뒤 적어 보세요."></textarea></label>
+              <label>개선 아이디어<textarea data-key="improveIdea" data-track="true" placeholder="더 튼튼하게, 더 편하게, 더 안전하게 만들 방법"></textarea></label>
+              <label>역할 분담<textarea data-key="roles" placeholder="팀으로 진행한다면 누가 무엇을 맡는지 적어 보세요."></textarea></label>
+            </div>
+          </article>
+
+          <article class="page" id="submission" data-step-title="제출 내용 정리하기">
+            <header class="page-title purple"><span>5</span><div><h2>발명대회 제출 내용 정리하기</h2><p>작품 설명을 한눈에 보이게 완성하기</p></div></header>
+            <div class="form-grid">
+              <label>작품 이름<input data-key="finalName" data-track="true" type="text" placeholder="최종 작품명"></label>
+              <label>제작 동기<textarea data-key="motive" data-track="true" placeholder="왜 이 발명품을 만들게 되었나요? 문제 발견 과정과 연결해 쓰세요."></textarea></label>
+              <label>제작 과정<textarea data-key="finalProcess" data-track="true" placeholder="준비물, 제작 순서, 테스트와 개선 과정을 간단히 정리하세요."></textarea></label>
+              <label>과학적 원리<textarea data-key="finalScience" data-track="true" placeholder="작품이 작동하는 과학 원리를 정확한 용어로 설명하세요."></textarea></label>
+              <label>효과 및 전망<textarea data-key="effect" data-track="true" placeholder="누구에게 어떤 도움이 되고, 앞으로 어떻게 발전시킬 수 있나요?"></textarea></label>
+            </div>
+            <div class="sketch-card" data-sketch="diagramSketch">
+              <div class="sketch-head">
+                <h3>아이디어 도면</h3>
+                <div class="brushes" aria-label="도면 도구">
+                  <button type="button" data-color="#111827" aria-label="검정 펜" class="swatch black active"></button>
+                  <button type="button" data-color="#0b6fb3" aria-label="파란 펜" class="swatch blue"></button>
+                  <button type="button" data-color="#ef6548" aria-label="주황 펜" class="swatch coral"></button>
+                  <label class="upload-button" aria-label="도면 첨부">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>
+                    <span>도면 첨부</span>
+                    <input type="file" data-image-upload accept="image/*">
+                  </label>
+                  <button type="button" data-eraser aria-label="지우개" class="icon-only" title="지우개">E</button>
+                  <button type="button" data-clear aria-label="도면 지우기" class="icon-only" title="도면 지우기">C</button>
+                </div>
+              </div>
+              <canvas width="1200" height="520" aria-label="아이디어 도면 그림판"></canvas>
+            </div>
+          </article>
+
+          <article class="page" id="presentation" data-step-title="발표 준비와 제출 전 점검">
+            <header class="page-title slate"><span>6</span><div><h2>발표 준비와 제출 전 점검</h2><p>설명은 짧게, 근거는 분명하게</p></div></header>
+            <div class="script-box">
+              <label>제가 발견한 문제는 <input data-key="scriptProblem" data-track="true" type="text" placeholder="문제"></label>
+              <label>그래서 만든 발명품은 <input data-key="scriptThing" data-track="true" type="text" placeholder="발명품"></label>
+              <label>작동 원리는 <input data-key="scriptScience" data-track="true" type="text" placeholder="원리"></label>
+              <label>이 발명품은 <input data-key="scriptHelp" data-track="true" type="text" placeholder="도움이 되는 대상"></label>
+            </div>
+            <div class="qa-table">
+              <label><span>기존 제품과 다른 점은 무엇인가요?</span><textarea data-key="answerDifferent" placeholder="핵심 단어로 먼저 적고, 발표할 때 문장으로 말해 보세요."></textarea></label>
+              <label><span>왜 이 과학 원리가 필요한가요?</span><textarea data-key="answerScience" placeholder="핵심 단어로 먼저 적고, 발표할 때 문장으로 말해 보세요."></textarea></label>
+              <label><span>실제로 써 보니 어떤 점을 개선했나요?</span><textarea data-key="answerImprove" placeholder="핵심 단어로 먼저 적고, 발표할 때 문장으로 말해 보세요."></textarea></label>
+            </div>
+            <fieldset class="check-panel final">
+              <legend>제출 전 점검표</legend>
+              <label><input data-key="finalCheckName" type="checkbox"> 작품 이름이 잘 드러난다</label>
+              <label><input data-key="finalCheckMotive" type="checkbox"> 문제 상황과 제작 동기가 연결된다</label>
+              <label><input data-key="finalCheckScamper" type="checkbox"> SCAMPER로 생각한 흔적이 있다</label>
+              <label><input data-key="finalCheckScience" type="checkbox"> 과학적 원리를 용어로 설명했다</label>
+              <label><input data-key="finalCheckProcess" type="checkbox"> 제작 과정이 순서대로 적혀 있다</label>
+              <label><input data-key="finalCheckTest" type="checkbox"> 테스트와 개선 내용이 있다</label>
+              <label><input data-key="finalCheckUser" type="checkbox"> 효과와 사용할 사람이 분명하다</label>
+              <label><input data-key="finalCheckDrawing" type="checkbox"> 도면에 부품 이름과 화살표가 있다</label>
+              <label><input data-key="finalCheckSafety" type="checkbox"> 안전하게 만들고 사용할 수 있다</label>
+              <label><input data-key="finalCheckTime" type="checkbox"> 발표 시간이 너무 길지 않다</label>
+            </fieldset>
+            <label class="sentence-box">마지막 메모
+              <textarea data-key="finalMemo" placeholder="선생님 피드백, 추가 준비물, 발표 연습 날짜 등을 적어 보세요."></textarea>
+            </label>
+          </article>
+        </section>
+
+        <aside class="inspector" aria-label="작성 도움">
+          <section>
+            <h2>오늘의 작성 상태</h2>
+            <p id="stepName">기본 정보</p>
+            <div class="meter"><span id="sideProgress"></span></div>
+          </section>
+          <section>
+            <h2>핵심 질문</h2>
+            <p id="focusQuestion">불편한 점을 한 문장으로 말할 수 있나요?</p>
+          </section>
+          <section>
+            <h2>SCAMPER 힌트</h2>
+            <div class="hint-chips">
+              <button type="button" data-jump="scamperS">S 바꾸기</button>
+              <button type="button" data-jump="scamperC">C 더하기</button>
+              <button type="button" data-jump="scamperA">A 적용</button>
+              <button type="button" data-jump="scamperM">M 크기</button>
+              <button type="button" data-jump="scamperP">P 용도</button>
+              <button type="button" data-jump="scamperE">E 빼기</button>
+              <button type="button" data-jump="scamperR">R 반대로</button>
+            </div>
+          </section>
+          <section class="center-card" aria-label="제작 센터">
+            <img src="./assets/steamedu-logo.png" alt="STEAMedu 로고">
+            <p>레고에듀케이션 청라스마트러닝센터</p>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

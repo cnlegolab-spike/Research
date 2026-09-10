@@ -1,0 +1,20 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('app.js','utf8');
+const ctx=vm.createContext({Date,console});
+vm.runInContext(fs.readFileSync('curriculum.js','utf8')+'\n'+source.split('try{const saved=localStorage')[0],ctx);
+function evalTest(code){return vm.runInContext(code,ctx)}
+assert.equal(evalTest("Object.values(CURRICULUM).flatMap(x=>Object.values(x)).flat().length"),24);
+assert.equal(evalTest("Object.keys(CURRICULUM['STEAM-L1']).length"),2);
+assert.equal(evalTest("Object.keys(CURRICULUM['STEAM-L2']).length"),4);
+assert.equal(evalTest("CURRICULUM['STEAM-L2']['S/P 1Gr'][3]"),'FLL SUBMERGED B · 로봇미션 + 로봇디자인');
+assert.equal(evalTest("normalize({...emptyState(),fields:{level:'STEAM-L1',group:'S/P 4Gr',course:'스마트 병원'}}).fields.group"),'');
+assert.equal(evalTest("normalize({...emptyState(),fields:{level:'STEAM-L2',group:'S/P 3Gr',course:'스마트차량 (운송수단)'}}).fields.course"),'스마트차량 (운송수단)');
+assert.equal(evalTest("normalize({...emptyState(),photos:Array(7).fill({src:'data:image/jpeg;base64,YQ==',caption:'설명'})}).photos.length"),4);
+assert.throws(()=>evalTest("normalize({fields:{name:'old'}})"));
+assert.throws(()=>evalTest("normalize({...emptyState(),photos:[{src:'javascript:alert(1)'}]})"));
+assert.throws(()=>evalTest("normalize({...emptyState(),photos:[{src:'data:image/svg+xml;base64,YQ=='}]})"));
+assert.equal(evalTest("normalize({...emptyState(),stages:['설계','잘못된 단계']}).stages.length"),1);
+const html=fs.readFileSync('index.html','utf8');
+for(const id of ['cover','plan','record','reflect','photos','cameraDialog','photoGrid'])assert(html.includes('id="'+id+'"'));
+for(const file of ['app.js','curriculum.js','styles.css','daily.css','assets/steamedu-logo.png'])assert(fs.existsSync(file));
+console.log('PASS: 24 curriculum entries, dependent selections, data validation, photo limit, required screens and assets');

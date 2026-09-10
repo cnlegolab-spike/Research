@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">발명 아이디어 작성 흐름</title>
+  <desc id="desc">문제 발견, SCAMPER, 과학적 원리, 발명대회 준비가 이어지는 흐름 도식</desc>
+  <defs>
+    <filter id="soft" x="-10%" y="-20%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#122031" flood-opacity=".15"/>
+    </filter>
+  </defs>
+  <rect width="980" height="420" rx="36" fill="#f7f8fb"/>
+  <path d="M72 315 C190 230 280 255 373 174 C477 84 610 108 699 185 C773 249 829 228 908 116" fill="none" stroke="#0a6aaa" stroke-width="8" stroke-linecap="round" stroke-dasharray="1 22"/>
+  <g filter="url(#soft)">
+    <g transform="translate(78 92)">
+      <rect width="170" height="170" rx="30" fill="#ffe773"/>
+      <text x="85" y="72" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="48" font-weight="800" fill="#151922">1</text>
+      <text x="85" y="116" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="24" font-weight="700" fill="#151922">문제 발견</text>
+    </g>
+    <g transform="translate(306 92)">
+      <rect width="170" height="170" rx="30" fill="#ffd9cf"/>
+      <text x="85" y="72" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="48" font-weight="800" fill="#151922">2</text>
+      <text x="85" y="116" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="24" font-weight="700" fill="#151922">SCAMPER</text>
+    </g>
+    <g transform="translate(534 92)">
+      <rect width="170" height="170" rx="30" fill="#d7edf8"/>
+      <text x="85" y="72" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="48" font-weight="800" fill="#151922">3</text>
+      <text x="85" y="116" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="24" font-weight="700" fill="#151922">과학 원리</text>
+    </g>
+    <g transform="translate(762 92)">
+      <rect width="170" height="170" rx="30" fill="#e3ddf1"/>
+      <text x="85" y="72" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="48" font-weight="800" fill="#151922">4</text>
+      <text x="85" y="116" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="24" font-weight="700" fill="#151922">대회 준비</text>
+    </g>
+  </g>
+  <text x="490" y="340" text-anchor="middle" font-family="Malgun Gothic, Arial, sans-serif" font-size="25" font-weight="800" fill="#0a6aaa">관찰한 불편함을 설명 가능한 발명 아이디어로 정리하기</text>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "name": "과학 탐구·발명 아이디어 작성 템플릿",
+  "short_name": "탐구발명",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#0b6fb3",
+  "lang": "ko"
+}
